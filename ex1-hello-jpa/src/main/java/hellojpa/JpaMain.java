@@ -4,7 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.List;
 
 public class JpaMain {
     public static void main(String[] args) {
@@ -20,15 +19,13 @@ public class JpaMain {
         tx.begin();
 
         try {
-            //jpql
-            List<Member> result = em.createQuery("select m from Member as m", Member.class)
-                    .setFirstResult(1)
-                    .setMaxResults(5)
-                    .getResultList();
 
-            for (Member member : result) {
-                System.out.println("member.name = " + member.getName());
-            }
+            Member member = new Member();
+            member.setId(3L);
+            member.setUsername("성이름");
+            member.setRoleType(RoleType.GUEST);
+
+            em.persist(member);
 
             /**
              * 생성

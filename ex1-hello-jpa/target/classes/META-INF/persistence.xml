@@ -19,7 +19,8 @@
             <property name="hibernate.format_sql" value="true"/>
             <!-- 쿼리가 나온 이유를 주석에 보여줌 -->
             <property name="hibernate.use_sql_comments" value="true"/>
-            <!--<property name="hibernate.hbm2ddl.auto" value="create"/>-->
+            <!-- 스키마 자동 생성 -->
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
          </properties>
     </persistence-unit>
 </persistence>
