@@ -20,13 +20,23 @@ public class JpaMain {
 
         try {
 
-            Member member = new Member();
-            member.setId(3L);
-            member.setUsername("성이름");
-            member.setRoleType(RoleType.GUEST);
+            Member member1 = new Member();
+            member1.setUsername("A");
 
-            em.persist(member);
+            Member member2 = new Member();
+            member2.setUsername("B");
 
+            Member member3 = new Member();
+            member3.setUsername("C");
+            System.out.println("==============");
+            em.persist(member1);
+            em.persist(member2);
+            em.persist(member3);
+
+            System.out.println("member1 = " + member1);
+            System.out.println("member2 = " + member2);
+            System.out.println("member3 = " + member3);
+            System.out.println("==============");
             /**
              * 생성
              * Member member = new Member();
