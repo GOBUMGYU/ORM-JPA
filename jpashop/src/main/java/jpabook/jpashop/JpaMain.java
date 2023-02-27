@@ -2,6 +2,7 @@ package jpabook.jpashop;
 
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
+import jpabook.jpashop.domain.OrderItem;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -22,11 +23,13 @@ public class JpaMain {
         tx.begin();
 
         try {
-            //데이터 중심적인 설계
-            Order order = em.find(Order.class, 1L);
-            Long memberId = order.getMemberId();
-            em.find(Member.class, memberId);
+            Order order = new Order();
+            em.persist(order);
+//            order.addOrderItem(new OrderItem());
 
+            OrderItem orderItem = new OrderItem();
+            orderItem.setOrder(order);
+            em.persist(orderItem);
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
